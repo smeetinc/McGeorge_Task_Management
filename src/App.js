@@ -1,57 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Progress from "./pages/Progress";
+import Completed from "./pages/Completed";
+import SideNav from "./components/SideNav";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <>
+      <Router>
+        <div className="">
+          <SideNav />
+          <div>
+            <Header />
+            <div>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/progress" element={<Progress />} />
+                <Route path="/completed" element={<Completed />} />
+              </Routes>
+            </div>
+            <Footer />
+          </div>
+        </div>
+      </Router>
+    </>
   );
 }
 
