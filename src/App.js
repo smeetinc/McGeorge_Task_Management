@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import Add from "./pages/Add";
 import Progress from "./pages/Progress";
 import Completed from "./pages/Completed";
 import SideNav from "./components/SideNav";
@@ -10,18 +11,21 @@ function App() {
   return (
     <>
       <Router>
-        <div className="">
+        <div className="flex min-h-screen">
           <SideNav />
-          <div>
-            <Header />
-            <div>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/progress" element={<Progress />} />
-                <Route path="/completed" element={<Completed />} />
-              </Routes>
+          <div className="flex-1 min-h-screen">
+            <div className=" min-h-screen">
+              <Header />
+              <div className="min-h-screen">
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/add" element={<Add />} />
+                  <Route path="/progress" element={<Progress />} />
+                  <Route path="/completed" element={<Completed />} />
+                </Routes>
+              </div>
+              <Footer />
             </div>
-            <Footer />
           </div>
         </div>
       </Router>
