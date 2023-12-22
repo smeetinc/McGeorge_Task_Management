@@ -34,7 +34,7 @@ function Progress() {
   return (
     <div className="px-4 py-4">
       <section className="heading">
-        <h1 className="text-4xl font-semibold mb-8">Welcome Back John</h1>
+        <h1 className="text-4xl font-semibold mb-8">Incomplete Task(s)</h1>
       </section>
 
       <section className="mx-auto w-fit px-10">
@@ -45,7 +45,7 @@ function Progress() {
             ))}
           </div>
         ) : (
-          <h3>You have not set any Task</h3>
+          <h3>You don't have any Incomplete task at the moment</h3>
         )}
       </section>
     </div>

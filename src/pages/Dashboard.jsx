@@ -44,7 +44,22 @@ function Dashboard() {
             ))}
           </div>
         ) : (
-          <h3>You have not set any Task</h3>
+          <>
+            <h3>
+              You have not set any Task, click the button below to start adding
+              tasks now.
+            </h3>
+            <div className="my-2 w-1/2 lg:w-1/4">
+              <a href="/add">
+                <button
+                  className="uppercase text-sm font-bold tracking-wide bg-sky-950 text-gray-100 p-3 rounded-lg w-full 
+                      focus:outline-none focus:shadow-outline cursor-pointer"
+                >
+                  Add New Task
+                </button>
+              </a>
+            </div>
+          </>
         )}
       </section>
     </div>
