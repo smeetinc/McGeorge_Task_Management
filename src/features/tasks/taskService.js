@@ -18,6 +18,13 @@ const getTasks = async () => {
   return response.data;
 };
 
+// Get one user task
+const fetchOneTask = async (taskId) => {
+  const response = await axios.get(API_URL + taskId);
+
+  return response.data;
+};
+
 // Delete user task
 const deleteTask = async (taskId) => {
   const response = await axios.delete(API_URL + taskId);
@@ -25,10 +32,18 @@ const deleteTask = async (taskId) => {
   return response.data;
 };
 
+//update user task
+const updateTask = async (taskData) => {
+  const response = await axios.put(API_URL, taskData);
+  return response.data;
+};
+
 const taskService = {
   createTask,
   getTasks,
+  fetchOneTask,
   deleteTask,
+  updateTask,
 };
 
 export default taskService;

@@ -54,7 +54,7 @@ function Add() {
   return (
     <div className="px-10">
       <div class="flex">
-        <h1 class="font-bold uppercase text-5xl mb-8">
+        <h1 class="font-bold uppercase text-3xl lg:text-4xl mb-8">
           Add a new <br /> Task
         </h1>
       </div>

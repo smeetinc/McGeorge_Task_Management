@@ -45,12 +45,48 @@ export const getTasks = createAsyncThunk(
   }
 );
 
+// Get one user task
+export const fetchOneTask = createAsyncThunk(
+  "tasks/getOne",
+  async (id, thunkAPI) => {
+    try {
+      return await taskService.fetchOneTask(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Delete user task
 export const deleteTask = createAsyncThunk(
   "tasks/delete",
   async (id, thunkAPI) => {
     try {
       return await taskService.deleteTask(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Update user Task
+export const updateTask = createAsyncThunk(
+  "tasks/update",
+  async (taskData, thunkAPI) => {
+    try {
+      return await taskService.updateTask(taskData);
     } catch (error) {
       const message =
         (error.response &&
@@ -108,6 +144,36 @@ export const taskSlice = createSlice({
         );
       })
       .addCase(deleteTask.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(fetchOneTask.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchOneTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.tasks = state.tasks.filter(
+          (task) => task.id !== action.payload.id
+        );
+      })
+      .addCase(fetchOneTask.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateTask.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.tasks = state.tasks.filter(
+          (task) => task.id !== action.payload.id
+        );
+      })
+      .addCase(updateTask.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -19,7 +19,7 @@ A Task Management app built with React and Redux.
 
 ## Demo
 
-- vercel link coming soon.
+- [Live Demo](https://mcgeorge-task-management.vercel.app/)
 
 ## Installation
 

@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Add from "./pages/Add";
 import Progress from "./pages/Progress";
 import Completed from "./pages/Completed";
+import Edit from "./pages/Edit";
 import SideNav from "./components/SideNav";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -16,14 +17,14 @@ function App() {
   return (
     <>
       <Router>
-        <div className="flex min-h-screen">
+        <div className="flex min-h-screen overflow-x-hidden">
           <div className="md:hidden">{menu ? <SideNav /> : ""}</div>
           <div className="hidden md:block">
             <SideNav />
           </div>
           <div className="flex-1 min-h-screen">
             <div className=" min-h-screen">
-              <div className="flex justify-between items-center md:hidden">
+              <div className="flex justify-between items-center md:hidden pl-4">
                 <div
                   onClick={() => setMenu(!menu)}
                   className="cursor-pointer mr-2 md:hidden"
@@ -42,6 +43,7 @@ function App() {
                   <Route path="/add" element={<Add />} />
                   <Route path="/progress" element={<Progress />} />
                   <Route path="/completed" element={<Completed />} />
+                  <Route path="edit/:id" element={<Edit />} />
                 </Routes>
               </div>
               <Footer />
