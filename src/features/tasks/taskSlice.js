@@ -9,13 +9,12 @@ const initialState = {
   message: "",
 };
 
-// Create new goal
+// Create new task
 export const createTask = createAsyncThunk(
   "tasks/create",
   async (taskData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await taskService.createTask(taskData, token);
+      return await taskService.createTask(taskData);
     } catch (error) {
       const message =
         (error.response &&
@@ -28,13 +27,12 @@ export const createTask = createAsyncThunk(
   }
 );
 
-// Get user goals
+// Get user tasks
 export const getTasks = createAsyncThunk(
   "tasks/getAll",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await taskService.getTasks(token);
+      return await taskService.getTasks();
     } catch (error) {
       const message =
         (error.response &&
@@ -47,13 +45,12 @@ export const getTasks = createAsyncThunk(
   }
 );
 
-// Delete user goal
+// Delete user task
 export const deleteTask = createAsyncThunk(
   "tasks/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await taskService.deleteTask(id, token);
+      return await taskService.deleteTask(id);
     } catch (error) {
       const message =
         (error.response &&
@@ -80,7 +77,7 @@ export const taskSlice = createSlice({
       .addCase(createTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.goals.push(action.payload);
+        state.tasks.push(action.payload);
       })
       .addCase(createTask.rejected, (state, action) => {
         state.isLoading = false;
@@ -106,8 +103,8 @@ export const taskSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.goals = state.goals.filter(
-          (goal) => goal._id !== action.payload.id
+        state.tasks = state.tasks.filter(
+          (task) => task.id !== action.payload.id
         );
       })
       .addCase(deleteTask.rejected, (state, action) => {

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function SideNav() {
   return (
-    <div className="hidden md:block bg-green-500   text-white basis-2/6 lg:basis-1/5 py-12 pl-9 sticky h-screen top-0 bottom-0 left-0">
+    <div className="md:block bg-green-500   text-white basis-2/6 lg:basis-1/5 py-12 pl-9 sticky h-screen top-0 bottom-0 left-0">
       <div className="flex items-center">
         <FaUser className="" />
         <h2 className="text-2xl font-bold text-white ml-4">John Doe</h2>
@@ -19,10 +19,10 @@ function SideNav() {
         <nav>
           <ul className="">
             <li className="grid grid-cols-2 place-items-center lg:place-items-start gap-3 py-3 hover:text-gray-700 transition duration-150 ease">
-              <Link to="/dashboard" className="">
+              <Link to="/" className="">
                 Dashboard
               </Link>
-              <Link to="/dashboard">
+              <Link to="/">
                 <MdDashboard size={25} className="ml-4" />
               </Link>
             </li>

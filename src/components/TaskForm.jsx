@@ -3,28 +3,28 @@ import { useDispatch } from "react-redux";
 import { createTask } from "../features/tasks/taskSlice";
 
 function TaskForm() {
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
 
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createTask({ text }));
-    setText("");
+    dispatch(createTask({ title }));
+    setTitle("");
   };
 
   return (
     <section className="form">
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="text">Task</label>
+          <label htmlFor="title">Task</label>
           <input
             type="text"
-            name="text"
-            id="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            name="title"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="form-group">
